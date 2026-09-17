@@ -1,0 +1,148 @@
+{
+  "listEquipment": {
+    "Equipment": [
+      { "equipmentId": "k7m1xq9p", "itemName": "Bats", "quantity": 8 },
+      { "equipmentId": "g4n8kp2w", "itemName": "Gloves", "quantity": 12 },
+      { "equipmentId": "h2p6rt3c", "itemName": "Helmets", "quantity": 10 },
+      { "equipmentId": "b9q4vs1b", "itemName": "Baseballs", "quantity": 24 },
+      { "equipmentId": "c2t7yh5d", "itemName": "Catcher's gear", "quantity": 3 },
+      { "equipmentId": "a8w3mn4f", "itemName": "Bases", "quantity": 4 }
+    ],
+    "Ticket": [
+      {
+        "ticketId": "n4p8wd2c",
+        "createdAt": "2026-08-03T14:30:00.000Z",
+        "name": "Maya",
+        "quantity": 1,
+        "equipmentId": "h2p6rt3c"
+      },
+      {
+        "ticketId": "t9r3ab6k",
+        "createdAt": "2026-07-30T16:00:00.000Z",
+        "name": "Jordan",
+        "quantity": 3,
+        "equipmentId": "b9q4vs1b"
+      },
+      {
+        "ticketId": "k7m2xq9p",
+        "createdAt": "2026-07-28T12:15:00.000Z",
+        "name": "Lucas",
+        "quantity": 2,
+        "equipmentId": "k7m1xq9p"
+      }
+    ]
+  },
+  "successfulCreate": {
+    "Equipment": [
+      { "equipmentId": "k7m1xq9p", "itemName": "Bats", "quantity": 8 },
+      { "equipmentId": "g4n8kp2w", "itemName": "Gloves", "quantity": 11 },
+      { "equipmentId": "h2p6rt3c", "itemName": "Helmets", "quantity": 10 },
+      { "equipmentId": "b9q4vs1b", "itemName": "Baseballs", "quantity": 24 },
+      { "equipmentId": "c2t7yh5d", "itemName": "Catcher's gear", "quantity": 3 },
+      { "equipmentId": "a8w3mn4f", "itemName": "Bases", "quantity": 4 }
+    ],
+    "Ticket": [
+      {
+        "ticketId": "m3n8kp2w",
+        "createdAt": "2026-08-05T10:00:00.000Z",
+        "name": "Alex",
+        "quantity": 1,
+        "equipmentId": "g4n8kp2w"
+      },
+      {
+        "ticketId": "n4p8wd2c",
+        "createdAt": "2026-08-03T14:30:00.000Z",
+        "name": "Maya",
+        "quantity": 1,
+        "equipmentId": "h2p6rt3c"
+      },
+      {
+        "ticketId": "t9r3ab6k",
+        "createdAt": "2026-07-30T16:00:00.000Z",
+        "name": "Jordan",
+        "quantity": 3,
+        "equipmentId": "b9q4vs1b"
+      },
+      {
+        "ticketId": "k7m2xq9p",
+        "createdAt": "2026-07-28T12:15:00.000Z",
+        "name": "Lucas",
+        "quantity": 2,
+        "equipmentId": "k7m1xq9p"
+      }
+    ]
+  },
+  "openTicket": {
+    "Equipment": [
+      { "equipmentId": "k7m1xq9p", "itemName": "Bats", "quantity": 8 }
+    ],
+    "Ticket": [
+      {
+        "ticketId": "k7m2xq9p",
+        "createdAt": "2026-07-28T12:15:00.000Z",
+        "name": "Lucas",
+        "quantity": 2,
+        "equipmentId": "k7m1xq9p"
+      }
+    ]
+  },
+  "listTickets": {
+    "Equipment": [
+      { "equipmentId": "k7m1xq9p", "itemName": "Bats", "quantity": 8 },
+      { "equipmentId": "g4n8kp2w", "itemName": "Gloves", "quantity": 12 },
+      { "equipmentId": "h2p6rt3c", "itemName": "Helmets", "quantity": 10 },
+      { "equipmentId": "b9q4vs1b", "itemName": "Baseballs", "quantity": 24 },
+      { "equipmentId": "c2t7yh5d", "itemName": "Catcher's gear", "quantity": 3 },
+      { "equipmentId": "a8w3mn4f", "itemName": "Bases", "quantity": 4 }
+    ],
+    "Ticket": [
+      {
+        "ticketId": "n4p8wd2c",
+        "createdAt": "2026-08-03T14:30:00.000Z",
+        "name": "Maya",
+        "quantity": 1,
+        "equipmentId": "h2p6rt3c"
+      },
+      {
+        "ticketId": "t9r3ab6k",
+        "createdAt": "2026-07-30T16:00:00.000Z",
+        "name": "Jordan",
+        "quantity": 3,
+        "equipmentId": "b9q4vs1b"
+      },
+      {
+        "ticketId": "k7m2xq9p",
+        "createdAt": "2026-07-28T12:15:00.000Z",
+        "name": "Lucas",
+        "quantity": 2,
+        "equipmentId": "k7m1xq9p"
+      }
+    ]
+  },
+  "returnItem": {
+    "Equipment": [
+      { "equipmentId": "k7m1xq9p", "itemName": "Bats", "quantity": 10 },
+      { "equipmentId": "g4n8kp2w", "itemName": "Gloves", "quantity": 12 },
+      { "equipmentId": "h2p6rt3c", "itemName": "Helmets", "quantity": 10 },
+      { "equipmentId": "b9q4vs1b", "itemName": "Baseballs", "quantity": 24 },
+      { "equipmentId": "c2t7yh5d", "itemName": "Catcher's gear", "quantity": 3 },
+      { "equipmentId": "a8w3mn4f", "itemName": "Bases", "quantity": 4 }
+    ],
+    "Ticket": [
+      {
+        "ticketId": "n4p8wd2c",
+        "createdAt": "2026-08-03T14:30:00.000Z",
+        "name": "Maya",
+        "quantity": 1,
+        "equipmentId": "h2p6rt3c"
+      },
+      {
+        "ticketId": "t9r3ab6k",
+        "createdAt": "2026-07-30T16:00:00.000Z",
+        "name": "Jordan",
+        "quantity": 3,
+        "equipmentId": "b9q4vs1b"
+      }
+    ]
+  }
+}
