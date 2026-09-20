@@ -27,17 +27,14 @@ Equipment/ticket data for this system is stored in **AWS Aurora** (two tables).
 |-----------|------|--------|
 | `equipmentId` | S | Partition key; unique |
 | `itemName` | S | name of item |
-| `quantity` | Int | amount of each item |
+| `total` | Int | amount of each item |
 
 
 Example item:
 
-```json
-{
-  "equipmentId": "k7m1xq9p",
-  "itemName": "bat",
-  "quantity": 2,
-}
+```sql
+INSERT INTO Equipment (equipmentId, itemName, total) VALUES
+  ('k7m1xq9p', 'Bats', 2);
 ```
 
 ## Table 2
@@ -48,7 +45,7 @@ Example item:
 | Partition key | `ticketId` (String) — unique identifier for the ticket |
 | Sort key | none |
 
-Listing tickets uses a table **Scan**; the application sorts results in memory when a particular order is required (for example, newest first).
+Listing tickets uses a table (`ORDER BY createdAt DESC`); the application sorts results in memory when a particular order is required (for example, newest first).
 
 
 ## Item shape
@@ -64,12 +61,7 @@ Listing tickets uses a table **Scan**; the application sorts results in memory w
 
 Example item:
 
-```json
-{
-  "ticketId": "k7m2xq9p",
-  "createdAt": "2026-07-28T12:15:00.000Z",
-  "name": "Lucas",
-  "quantity": 2,
-  "equipmentId": "k7m1xq9p",
-}
+```sql
+INSERT INTO Ticket (ticketId, createdAt, name, quantity, equipmentId) VALUES
+  ('k7m2xq9p', '2026-07-28T12:15:00.000Z', 'Lucas', 2, 'k7m1xq9p');
 ```
