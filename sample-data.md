@@ -39,7 +39,7 @@ INSERT INTO Ticket (ticketId, createdAt, name, quantity, equipmentId) VALUES
 
 ## 2. Successful create ticket
 
-Alex borrows 1 Gloves. The system inserts a ticket and decrements `Gloves.quantity` from 12 to 11. The new ticket is first when listing newest first. Other rows are unchanged from scenario 1.
+Alex borrows 1 Gloves. The system inserts a ticket and decrements glove available from 12 to 11. The new ticket is first when listing newest first. Other rows are unchanged from scenario 1.
 
 ### Equipment
 
@@ -111,7 +111,7 @@ INSERT INTO Ticket (ticketId, createdAt, name, quantity, equipmentId) VALUES
 
 ## 5. Return item
 
-Lucas returns 2 Bats. Ticket `k7m2xq9p` is deleted and is no longer listed. `Bats.quantity` increments from 8 to 10.
+Lucas returns 2 Bats. Ticket `k7m2xq9p` is deleted and is no longer listed. Bats available increments from 8 to 10.
 
 ### Equipment
 

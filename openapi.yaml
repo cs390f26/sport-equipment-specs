@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: Little League Equipment Locker API
+  version: 1.0.0
+  description: |
+    API for browsing available baseball equipment, borrowing equipment with a
+    ticket, and returning borrowed equipment.
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+tags:
+  - name: Equipment
+    description: Equipment available to borrow
+  - name: Tickets
+    description: Open equipment borrow tickets
+paths:
+  /equipment:
+    get:
+      tags:
+        - Equipment
+      summary: List equipment and available quantities
+      operationId: listEquipment
+      responses:
+        "200":
+          description: Equipment ordered by item name. Available quantity is calculated as total inventory minus the quantities on open tickets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Equipment"
+
+  /tickets:
+    get:
+      tags:
+        - Tickets
+      summary: List open borrow tickets
+      operationId: listTickets
+      responses:
+        "200":
+          description: Open tickets ordered newest first by creation time
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Ticket"
+    post:
+      tags:
+        - Tickets
+      summary: Create a borrow ticket
+      description: Creates one ticket and decreases the selected equipment's calculated available quantity atomically.
+      operationId: createTicket
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTicketRequest"
+      responses:
+        "201":
+          description: Ticket created
+          headers:
+            Location:
+              description: URL of the newly created ticket
+              schema:
+                type: string
+                format: uri-reference
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ticket"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          description: Equipment was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Requested quantity is greater than the calculated available quantity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /tickets/{ticketId}:
+    parameters:
+      - $ref: "#/components/parameters/TicketId"
+    get:
+      tags:
+        - Tickets
+      summary: Get an open borrow ticket
+      operationId: getTicket
+      responses:
+        "200":
+          description: Open ticket details, including the equipment name
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ticket"
+        "404":
+          $ref: "#/components/responses/TicketNotFound"
+    delete:
+      tags:
+        - Tickets
+      summary: Return the equipment on a ticket
+      description: Deletes the ticket and increases the equipment's calculated available quantity atomically.
+      operationId: returnTicket
+      responses:
+        "204":
+          description: Equipment returned and ticket deleted
+        "404":
+          $ref: "#/components/responses/TicketNotFound"
+
+components:
+  parameters:
+    TicketId:
+      name: ticketId
+      in: path
+      required: true
+      description: Unique identifier of the open ticket
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 32
+
+  schemas:
+    Equipment:
+      type: object
+      required:
+        - equipmentId
+        - itemName
+        - total
+      properties:
+        equipmentId:
+          type: string
+          maxLength: 32
+          description: Unique identifier of the equipment item
+          example: g4n8kp2w
+        itemName:
+          type: string
+          maxLength: 64
+          example: Gloves
+        total:
+          type: integer
+          minimum: 0
+          description: Total inventory owned by the organization
+          example: 12
+
+    CreateTicketRequest:
+      type: object
+      required:
+        - name
+        - quantity
+        - equipmentId
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 64
+          description: Name of the person borrowing the equipment
+          example: Alex
+        quantity:
+          type: integer
+          minimum: 1
+          description: Number of units to borrow
+          example: 1
+        equipmentId:
+          type: string
+          minLength: 1
+          maxLength: 32
+          description: Equipment item to borrow
+          example: g4n8kp2w
+
+    Ticket:
+      type: object
+      required:
+        - ticketId
+        - createdAt
+        - name
+        - quantity
+        - equipmentId
+      properties:
+        ticketId:
+          type: string
+          maxLength: 32
+          example: m3n8kp2w
+        createdAt:
+          type: string
+          format: date-time
+          example: "2026-08-05T10:00:00.000Z"
+        name:
+          type: string
+          maxLength: 64
+          example: Alex
+        quantity:
+          type: integer
+          minimum: 1
+          example: 1
+        equipmentId:
+          type: string
+          maxLength: 32
+          example: g4n8kp2w
+
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: Quantity must be at least 1.
+
+  responses:
+    BadRequest:
+      description: Request contains invalid or missing values
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    TicketNotFound:
+      description: Ticket was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

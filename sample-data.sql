@@ -34,7 +34,7 @@ INSERT INTO Ticket (ticketId, createdAt, name, quantity, equipmentId) VALUES
 
 
 -- 2. Successful create ticket
--- Alex borrows 1 Gloves. Gloves.quantity goes from 12 to 11.
+-- Alex borrows 1 Gloves. Total available goes from 12 to 11.
 -- Other rows are unchanged from scenario 1.
 
 INSERT INTO Equipment (equipmentId, itemName, total) VALUES
@@ -81,7 +81,7 @@ INSERT INTO Ticket (ticketId, createdAt, name, quantity, equipmentId) VALUES
 
 -- 5. Return item
 -- Lucas returns 2 Bats. Ticket k7m2xq9p is deleted.
--- Bats.quantity increments from 8 to 10.
+-- Bats available increments from 8 to 10.
 
 INSERT INTO Equipment (equipmentId, itemName, total) VALUES
   ('k7m1xq9p', 'Bats', 10),
