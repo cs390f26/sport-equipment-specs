@@ -137,6 +137,12 @@ img {
   margin-top: 1.7rem;
 }
 
+.page-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
 .eyebrow {
   margin: 0 0 0.25rem;
   color: var(--leather-dark);
@@ -459,6 +465,7 @@ input:focus-visible {
 }
 
 @media (max-width: 640px) {
+
   .header-inner,
   .page-head,
   .ticket-row {
@@ -477,6 +484,10 @@ input:focus-visible {
 
   .page-head .stat-pill {
     margin-top: 0;
+  }
+
+  .page-head-actions {
+    flex-wrap: wrap;
   }
 
   .ticket-row .btn {
